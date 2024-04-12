@@ -2,6 +2,14 @@ body {
   background-color: #877cb4;
 }
 
+.icon {
+  display: block;
+  width: 25px;
+  height: 25px;
+  fill: rgb(255, 255, 255);
+  stroke: #6a6afb;
+}
+
 .app {
   margin: 0 auto;
   display: flex;
@@ -27,6 +35,9 @@ body {
 }
 
 .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 46px;
   height: 45px;
   border-radius: 14px;
@@ -50,11 +61,23 @@ body {
 .menu__item:hover img {
   filter: brightness(0) invert(1);
 }
+.menu__item:hover svg {
+  stroke: rgb(255, 255, 255);
+  fill: #6a6afb;
+}
 .menu__item_active {
+  cursor: default;
   background-color: rgb(80, 81, 249);
 }
 .menu__item_active img {
   filter: brightness(0) invert(1);
+}
+.menu__item_active svg {
+  stroke: rgb(255, 255, 255);
+  fill: #6a6afb;
+}
+.menu__item_active:hover {
+  background-color: rgb(80, 81, 249);
 }
 .menu__add {
   cursor: pointer;

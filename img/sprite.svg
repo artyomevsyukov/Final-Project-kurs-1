@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <script defer src="js/app.js"></script>
-    <title>Final project 1</title>
-</head>
-
-
-
-
-<body>
-    <!-- <svg display="none">
+<svg display="none" xmlns="http://www.w3.org/2000/svg">
         <symbol id="food" viewBox="0 0 23 24">
             <path
                 d="M1 11.4967V11.976C0.999915 13.9578 1.53407 15.903 2.54624 17.6068C3.55842 19.3106 5.01118 20.7101 6.75164 21.6579V23H16.3377V21.6579C18.0782 20.7101 19.5309 19.3106 20.5431 17.6068C21.5553 15.903 22.0894 13.9578 22.0893 11.976V11.4967H1Z"
@@ -43,38 +24,16 @@
                 d="M20.6274 11.4967C20.6394 11.3409 20.6514 11.1792 20.6514 11.0174C20.6514 9.61908 20.0959 8.27804 19.1071 7.28929C18.1184 6.30053 16.7773 5.74506 15.379 5.74506C13.9807 5.74506 12.6397 6.30053 11.6509 7.28929C10.6622 8.27804 10.1067 9.61908 10.1067 11.0174C10.1067 11.1792 10.1187 11.3409 10.1307 11.4967"
                 stroke-miterlimit="10" />
         </symbol>
-    </svg> -->
-    <div class="app">
-        <div class="panel">
-            <img class="logo" src="./img/svg/logo.svg" alt="Логотип Habbit App" />
-            <nav class="menu">
-                <div class="menu__list">
-                    <button class="menu__item btn " aria-label="Еда">
-                        <svg class="icon">
-                            <use xlink:href="img/sprite.svg#dumbbell"></use>
-                        </svg>
-                    </button>
-                    <button class="menu__item btn menu__item_active ">
-                        <img src="./img/svg/water.svg" alt="Вода" />
-                    </button>
-                    <button class="menu__item btn" aria-label="Еда">
-                        <svg class="icon">
-                            <use xlink:href="img/sprite.svg#food"></use>
-                        </svg>
-                    </button>
-
-                </div>
-                <button class="menu__add btn">
-                    <img src="./img/svg/add.svg" alt="Добавить привычку" />
-                </button>
-            </nav>
-        </div>
-        <div class="content">dsdfsf
-
-        </div>
-    </div>
-    <script src="./scripts/app.js"></script>
-</body>
-
-
-</html>
+<symbol id="dumbbell" viewBox="0 0 25 25">
+<g clip-path="url(#clip4_126)">
+		<path d="M13.63 20.92L4.07 11.36C3.8 11.09 3.42 10.93 3.03 10.93C2.22 10.93 1.56 11.59 1.56 12.41C1.56 12.8 1.71 13.17 1.99 13.45L11.54 23C11.82 23.28 12.19 23.43 12.58 23.43C13.4 23.43 14.06 22.77 14.06 21.96C14.06 21.57 13.9 21.19 13.63 20.92Z"  stroke-opacity="1.000000" stroke-width="1.000000"/>
+		<path d="M4.07 15.53C3.8 15.25 3.42 15.1 3.03 15.1C2.22 15.1 1.56 15.76 1.56 16.57C1.56 16.96 1.71 17.34 1.99 17.61L7.38 23C7.65 23.28 8.03 23.43 8.42 23.43C9.23 23.43 9.89 22.77 9.89 21.96C9.89 21.57 9.74 21.19 9.46 20.92"  stroke-opacity="1.000000" stroke-width="1.000000"/>
+		<path d="M3.64 19.27L2.08 20.83L4.16 22.91L5.72 21.35"  stroke-opacity="1.000000" stroke-width="1.000000"/>
+		<path d="M11.36 4.07L20.92 13.63C21.19 13.9 21.57 14.06 21.96 14.06C22.77 14.06 23.43 13.4 23.43 12.58C23.43 12.19 23.28 11.82 23 11.54L13.45 1.99C13.17 1.71 12.8 1.56 12.41 1.56C11.59 1.56 10.93 2.22 10.93 3.03C10.93 3.42 11.09 3.8 11.36 4.07Z"  stroke-opacity="1.000000" stroke-width="1.000000"/>
+		<path d="M20.92 9.46C21.19 9.74 21.57 9.89 21.96 9.89C22.77 9.89 23.43 9.23 23.43 8.42C23.43 8.03 23.28 7.65 23 7.38L17.61 1.99C17.34 1.71 16.96 1.56 16.57 1.56C15.76 1.56 15.1 2.22 15.1 3.03C15.1 3.42 15.25 3.8 15.53 4.07"  stroke-opacity="1.000000" stroke-width="1.000000"/>
+		<path d="M21.35 5.72L22.91 4.16L20.83 2.08L19.27 3.64"  stroke-opacity="1.000000" stroke-width="1.000000"/>
+		<path d="M7.81 15.1L15.1 7.81"  stroke-opacity="1.000000" stroke-width="1.000000"/>
+		<path d="M9.89 17.18L17.18 9.89"  stroke-opacity="1.000000" stroke-width="1.000000"/>
+	</g>
+</symbol>
+</svg>
