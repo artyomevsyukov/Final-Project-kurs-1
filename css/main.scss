@@ -8,6 +8,15 @@ body {
     fill: rgb(255, 255, 255);
     stroke: #6a6afb;
 }
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 46px;
+    height: 45px;
+    border-radius: 14px;
+    border: none;
+}
 .app {
     margin: 0 auto;
     display: flex;
@@ -29,19 +38,12 @@ body {
         margin-bottom: 47px;
     }
     .content {
+        padding: 45px;
         width: 100%;
         background-color: #f3f6fd;
     }
 }
-.btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 46px;
-    height: 45px;
-    border-radius: 14px;
-    border: none;
-}
+
 .menu {
     &__list {
         display: flex;
@@ -89,5 +91,56 @@ body {
         &:hover {
             background-color: #6a6afb;
         }
+    }
+}
+
+.header {
+    margin-bottom: 29px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title {
+        color: rgb(0, 0, 0);
+        font-family: Comfortaa;
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 33px;
+    }
+}
+.progress {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 235px;
+
+    &__text {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__name {
+        color: rgb(35, 35, 96);
+        font-family: Comfortaa;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+    }
+    &__percent {
+        color: rgb(118, 131, 150);
+        font-family: Comfortaa;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 13px;
+    }
+    &__bar {
+        // width: 235px;
+        width: 100%;
+        height: 5px;
+        border-radius: 4px;
+        background: rgb(230, 233, 237);
+        position: relative;
+    }
+    &__cover-bar {
+        position: absolute;
     }
 }
