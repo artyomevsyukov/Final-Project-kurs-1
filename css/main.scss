@@ -1,0 +1,71 @@
+body {
+    background-color: #877cb4;
+}
+.app {
+    margin: 0 auto;
+    display: flex;
+    max-width: 1012px;
+
+    .panel {
+        padding: 30px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        min-width: 133px;
+        background-color: #fbfaff;
+    }
+    .logo {
+        width: 59px;
+        height: 72px;
+        margin-bottom: 47px;
+    }
+    .content {
+        width: 100%;
+        background-color: #f3f6fd;
+    }
+}
+.btn {
+    width: 46px;
+    height: 45px;
+    border-radius: 14px;
+    border: none;
+}
+.menu {
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-bottom: 25px;
+    }
+    &__item {
+        cursor: pointer;
+        background-color: #fff;
+        box-shadow: 0 8px 14px 0 rgba(62, 107, 224, 0.12);
+
+        &:hover {
+            background-color: #6a6afb;
+        }
+        &:hover img {
+            filter: brightness(0) invert(1);
+        }
+
+        &_active {
+            background-color: rgb(80, 81, 249);
+
+            & img {
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+
+    &__add {
+        cursor: pointer;
+        border: 1px solid rgb(202, 213, 255);
+
+        &:hover {
+            background-color: #6a6afb;
+        }
+    }
+}

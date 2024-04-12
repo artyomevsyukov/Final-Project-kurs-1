@@ -1,0 +1,65 @@
+body {
+  background-color: #877cb4;
+}
+
+.app {
+  margin: 0 auto;
+  display: flex;
+  max-width: 1012px;
+}
+.app .panel {
+  padding: 30px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 133px;
+  background-color: #fbfaff;
+}
+.app .logo {
+  width: 59px;
+  height: 72px;
+  margin-bottom: 47px;
+}
+.app .content {
+  width: 100%;
+  background-color: #f3f6fd;
+}
+
+.btn {
+  width: 46px;
+  height: 45px;
+  border-radius: 14px;
+  border: none;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+.menu__item {
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 0 8px 14px 0 rgba(62, 107, 224, 0.12);
+}
+.menu__item:hover {
+  background-color: #6a6afb;
+}
+.menu__item:hover img {
+  filter: brightness(0) invert(1);
+}
+.menu__item_active {
+  background-color: rgb(80, 81, 249);
+}
+.menu__item_active img {
+  filter: brightness(0) invert(1);
+}
+.menu__add {
+  cursor: pointer;
+  border: 1px solid rgb(202, 213, 255);
+}
+.menu__add:hover {
+  background-color: #6a6afb;
+}/*# sourceMappingURL=main.css.map */
