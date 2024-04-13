@@ -1,0 +1,62 @@
+%state {
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        background-color: #6a6afb;
+    }
+    &:hover img {
+        filter: brightness(0) invert(1);
+    }
+    &:hover svg {
+        transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
+            filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        stroke: rgb(255, 255, 255);
+        fill: #6a6afb;
+    }
+    &:active {
+        background-color: var(--active-color);
+    }
+    &:active svg {
+        transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
+            filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        background-color: var(--active-color);
+        stroke: rgb(255, 255, 255);
+        fill: var(--active-color);
+    }
+}
+%state-active {
+    &:focus {
+        outline: none;
+    }
+    cursor: default;
+    background-color: var(--main-color);
+
+    & img {
+        filter: brightness(0) invert(1);
+    }
+    & svg {
+        transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
+            filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        stroke: rgb(255, 255, 255);
+        // fill: #6a6afb;
+        fill: var(--main-color);
+    }
+    &:hover {
+        background-color: rgb(80, 81, 249);
+    }
+    &:hover svg {
+        transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
+            filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        background-color: rgb(80, 81, 249);
+        fill: var(--main-color);
+        stroke: var(--hover-color);
+    }
+    &:active svg {
+        transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
+            filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        background-color: var(--main-color);
+        stroke: rgb(255, 255, 255);
+        fill: var(--main-color);
+    }
+}

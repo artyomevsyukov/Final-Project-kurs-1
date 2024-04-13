@@ -1,3 +1,44 @@
+:root {
+  --font-family: "Comfortaa";
+  --second-family: "PublicSans";
+  --content-width: 1152px;
+  --container-offset: 15px;
+  --container-width: calc(
+      var(--content-width) + (var(--container-offset) * 2)
+  );
+  --offset: 32px;
+  --main-size: 13px;
+  --second-size: 15px;
+  --light-color: #fff;
+  --main-color: rgb(80, 81, 249);
+  --hover-color: rgb(106, 106, 251);
+  --active-color: rgb(255, 92, 132);
+}
+
+.menu__item {
+  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+.menu__item:focus {
+  outline: none;
+}
+.menu__item:hover {
+  background-color: #6a6afb;
+}
+.menu__item:hover img {
+  filter: brightness(0) invert(1);
+}
+.menu__item:hover svg {
+  stroke: rgb(255, 255, 255);
+  fill: #6a6afb;
+}
+.menu__item:active {
+  background-color: var(--active-color);
+}
+.menu__item:active svg {
+  stroke: rgb(255, 255, 255);
+  fill: var(--active-color);
+}
+
 body {
   background-color: #877cb4;
 }
@@ -55,37 +96,45 @@ body {
   cursor: pointer;
   background-color: #fff;
   box-shadow: 0 8px 14px 0 rgba(62, 107, 224, 0.12);
-}
-.menu__item:hover {
-  background-color: #6a6afb;
-}
-.menu__item:hover img {
-  filter: brightness(0) invert(1);
-}
-.menu__item:hover svg {
-  stroke: rgb(255, 255, 255);
-  fill: #6a6afb;
+  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 .menu__item_active {
   cursor: default;
-  background-color: rgb(80, 81, 249);
+  background-color: var(--main-color);
 }
 .menu__item_active img {
   filter: brightness(0) invert(1);
 }
 .menu__item_active svg {
+  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
   stroke: rgb(255, 255, 255);
-  fill: #6a6afb;
+  fill: var(--main-color);
 }
 .menu__item_active:hover {
   background-color: rgb(80, 81, 249);
 }
+.menu__item_active:hover svg {
+  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  background-color: rgb(80, 81, 249);
+  fill: var(--main-color);
+  stroke: var(--hover-color);
+}
+.menu__item_active:active svg {
+  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  background-color: var(--main-color);
+  stroke: rgb(255, 255, 255);
+  fill: var(--main-color);
+}
 .menu__add {
   cursor: pointer;
   border: 1px solid rgb(202, 213, 255);
+  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 .menu__add:hover {
   background-color: #6a6afb;
+}
+.menu__add:active {
+  background-color: var(--active-color);
 }
 
 .header {
@@ -96,7 +145,7 @@ body {
 }
 .header__title {
   color: rgb(0, 0, 0);
-  font-family: Comfortaa;
+  font-family: Var(--font-family);
   font-size: 30px;
   font-weight: 400;
   line-height: 33px;
@@ -114,14 +163,14 @@ body {
 }
 .progress__name {
   color: rgb(35, 35, 96);
-  font-family: Comfortaa;
+  font-family: Var(--font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
 }
 .progress__percent {
   color: rgb(118, 131, 150);
-  font-family: Comfortaa;
+  font-family: Var(--font-family);
   font-size: 12px;
   font-weight: 400;
   line-height: 13px;
@@ -135,4 +184,116 @@ body {
 }
 .progress__cover-bar {
   position: absolute;
+  width: 80%;
+  height: 5px;
+  border-radius: 4px;
+  background: rgb(80, 81, 249);
+}
+
+.habbit {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+}
+.habbit .icon {
+  width: 24px;
+  height: 24px;
+  stroke: #94a3bd;
+}
+.habbit__day {
+  padding-left: 18px;
+  min-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 10px 0 0 10px;
+  border-right: 1px solid rgb(231, 235, 251);
+  color: rgb(0, 0, 0);
+  font-family: Var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 54px;
+  background: rgb(251, 250, 255);
+}
+.habbit__comment {
+  padding-left: 23px;
+  margin-right: 24px;
+  color: rgb(35, 35, 95);
+  font-family: Var(--font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+}
+.habbit__delete {
+  margin-left: auto;
+  margin-right: 15px;
+  background: none;
+  border: none;
+}
+.habbit__delete:hover svg {
+  transition: stroke 0.3s ease-in-out;
+  stroke: rgb(80, 81, 249);
+}
+.habbit__delete:active svg {
+  transition: stroke 0.3s ease-in-out;
+  stroke: var(--active-color);
+}
+
+.habbit-form {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  padding-left: 23px;
+  margin-right: 24px;
+  color: rgb(35, 35, 95);
+  font-family: Var(--font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  position: relative;
+}
+.habbit-form__input {
+  padding: 9px 20px 9px 48px;
+  flex: 1;
+  box-sizing: border-box;
+  border: 1px solid rgb(231, 235, 251);
+  border-radius: 9px;
+  background: rgb(255, 255, 255);
+  color: rgb(35, 35, 95);
+  font-family: Comfortaa;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+}
+.habbit-form__input::-moz-placeholder {
+  color: rgb(136, 153, 168);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+}
+.habbit-form__input::placeholder {
+  color: rgb(136, 153, 168);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+}
+.habbit-form__img {
+  position: absolute;
+  content: "";
+  left: 43px;
+  top: 11px;
+}
+.habbit-form__btn {
+  margin-right: 5px;
+  padding: 0 33px;
+  border-radius: 9px;
+  border: none;
+  background: rgb(237, 236, 254);
+  color: rgb(80, 81, 249);
+  font-family: Comfortaa;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 39px;
 }/*# sourceMappingURL=main.css.map */
