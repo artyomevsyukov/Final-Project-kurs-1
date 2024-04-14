@@ -35,16 +35,38 @@ function rerenderMenu(activeHabbit) {
     // })
     for (const habbit of habbits) {
         // Проверяем есть ли меню относящееся к этой привычке
-        console.log(habbit);
+        // console.log(habbit);
+
         const existed = document.querySelector(
             `[menu-habbit-id="${habbit.id}"]`
         );
-        console.log(existed);
+        // console.log(existed);
         if (!existed) {
-            //create
-        } else {
+            // const element = document
+            //     .createElement("button")
+            //     .setAttribute("[menu-habbit-id", habbit.id)
+            //     .classList.add("menu__item btn");
+            //     element.innerHTML = `<svg class="icon">
+            //     <use xlink:href="./img/sprite.svg#${habbit.icon}"></use>
+            // </svg>`;
+            const element = document.createElement("button");
+            element.setAttribute("menu-habbit-id", habbit.id);
+            element.classList.add("menu__item", "btn");
+            element.addEventListener("click", () => rerender(habbit.id));
+            element.innerHTML = `<img src="./img/svg/${habbit.icon}.svg" alt="${habbit.name}" />`;
+
+            if (activeHabbit.id === habbit.id) {
+                element.classList.add("menu__item_active");
+            }
+            page.menu.appendChild(element);
+
+            continue;
         }
+
         if (activeHabbit.id === habbit.id) {
+            existed.classList.add("menu__item_active");
+        } else {
+            existed.classList.remove("menu__item_active");
         }
     }
 }
@@ -54,8 +76,9 @@ function rerender(activeHabbitId) {
     rerenderMenu(activeHabbit);
 }
 
+//
 (() => {
     loadDate();
-    console.log(habbits);
-    // rerenderMenu()
+    // console.log(habbits);
+    rerender(habbits[0].id);
 })();
