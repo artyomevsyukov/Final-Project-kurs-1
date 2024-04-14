@@ -15,26 +15,28 @@
   --active-color: rgb(255, 92, 132);
 }
 
-.menu__item {
-  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+.habbit-form__btn, .menu__item {
+  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-.menu__item:focus {
+.habbit-form__btn:focus, .menu__item:focus {
   outline: none;
 }
-.menu__item:hover {
+.habbit-form__btn:hover, .menu__item:hover {
   background-color: #6a6afb;
 }
-.menu__item:hover img {
+.habbit-form__btn:hover img, .menu__item:hover img {
   filter: brightness(0) invert(1);
 }
-.menu__item:hover svg {
+.habbit-form__btn:hover svg, .menu__item:hover svg {
+  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
   stroke: rgb(255, 255, 255);
   fill: #6a6afb;
 }
-.menu__item:active {
+.habbit-form__btn:active, .menu__item:active {
   background-color: var(--active-color);
 }
-.menu__item:active svg {
+.habbit-form__btn:active svg, .menu__item:active svg {
+  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
   stroke: rgb(255, 255, 255);
   fill: var(--active-color);
 }
@@ -193,7 +195,7 @@ body {
 .habbit {
   margin-bottom: 12px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   border-radius: 10px;
   background: rgb(255, 255, 255);
 }
@@ -203,22 +205,28 @@ body {
   stroke: #94a3bd;
 }
 .habbit__day {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 130px;
+  max-width: 130px;
+  padding: 15px 0;
   padding-left: 18px;
-  min-width: 140px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   border-radius: 10px 0 0 10px;
   border-right: 1px solid rgb(231, 235, 251);
   color: rgb(0, 0, 0);
   font-family: Var(--font-family);
   font-size: 14px;
   font-weight: 500;
-  line-height: 54px;
-  background: rgb(251, 250, 255);
+  background-color: rgb(251, 250, 255);
+}
+.habbit__flex-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .habbit__comment {
-  padding-left: 23px;
+  padding: 15px 0 15px 24px;
   margin-right: 24px;
   color: rgb(35, 35, 95);
   font-family: Var(--font-family);
@@ -243,10 +251,11 @@ body {
 
 .habbit-form {
   display: flex;
+  padding: 6px 0;
   gap: 15px;
   width: 100%;
   padding-left: 23px;
-  margin-right: 24px;
+  margin-right: 10px;
   color: rgb(35, 35, 95);
   font-family: Var(--font-family);
   font-size: 16px;
@@ -283,10 +292,9 @@ body {
   position: absolute;
   content: "";
   left: 43px;
-  top: 11px;
+  top: 16px;
 }
 .habbit-form__btn {
-  margin-right: 5px;
   padding: 0 33px;
   border-radius: 9px;
   border: none;
@@ -296,4 +304,7 @@ body {
   font-size: 13px;
   font-weight: 500;
   line-height: 39px;
+}
+.habbit-form__btn:hover {
+  color: var(--light-color);
 }/*# sourceMappingURL=main.css.map */

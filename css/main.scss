@@ -22,7 +22,8 @@
 
 %state {
     transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
-        filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        filter 0.3s ease-in-out, background-color 0.3s ease-in-out,
+        color 0.3s ease-in-out;
     &:focus {
         outline: none;
     }
@@ -33,8 +34,8 @@
         filter: brightness(0) invert(1);
     }
     &:hover svg {
-        // transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
-        //     filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
+            filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
         stroke: rgb(255, 255, 255);
         fill: #6a6afb;
     }
@@ -42,8 +43,8 @@
         background-color: var(--active-color);
     }
     &:active svg {
-        // transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
-        //     filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
+            filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
         stroke: rgb(255, 255, 255);
         fill: var(--active-color);
     }
@@ -274,8 +275,7 @@ body {
 .habbit {
     margin-bottom: 12px;
     display: flex;
-    align-items: center;
-    // height: 54px;
+    align-items: stretch;
     border-radius: 10px;
     background: rgb(255, 255, 255);
 
@@ -284,13 +284,16 @@ body {
         height: 24px;
         stroke: #94a3bd;
     }
+
     &__day {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        min-width: 130px;
+        max-width: 130px;
+
+        padding: 15px 0;
         padding-left: 18px;
-        // width: 10vw;
-        min-width: 140px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         border-radius: 10px 0 0 10px;
         border-right: 1px solid rgb(231, 235, 251);
 
@@ -298,12 +301,15 @@ body {
         font-family: Var(--font-family);
         font-size: 14px;
         font-weight: 500;
-        line-height: 54px;
-        background: rgb(251, 250, 255);
+        background-color: rgb(251, 250, 255);
     }
-
+    &__flex-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     &__comment {
-        padding-left: 23px;
+        padding: 15px 0 15px 24px;
         margin-right: 24px;
         color: rgb(35, 35, 95);
         font-family: Var(--font-family);
@@ -329,10 +335,11 @@ body {
 }
 .habbit-form {
     display: flex;
+    padding: 6px 0;
     gap: 15px;
     width: 100%;
     padding-left: 23px;
-    margin-right: 24px;
+    margin-right: 10px;
     color: rgb(35, 35, 95);
     font-family: Var(--font-family);
     font-size: 16px;
@@ -365,11 +372,11 @@ body {
         position: absolute;
         content: "";
         left: 43px;
-        top: 11px;
+        top: 16px;
     }
 
     &__btn {
-        margin-right: 5px;
+        // margin-right: 5px;
         padding: 0 33px;
         border-radius: 9px;
         border: none;
@@ -379,5 +386,9 @@ body {
         font-size: 13px;
         font-weight: 500;
         line-height: 39px;
+        @extend %state;
+        &:hover {
+            color: var(--light-color);
+        }
     }
 }

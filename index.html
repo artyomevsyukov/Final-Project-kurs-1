@@ -7,9 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <script defer src="js/app.js"></script>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script defer src="./js/app.js"></script>
     <title>Final project 1</title>
 </head>
 
@@ -19,9 +19,9 @@
             <img class="logo" src="./img/svg/logo.svg" alt="Логотип Habbit App" />
             <nav class="menu">
                 <div class="menu__list">
-                    <button class="menu__item btn " aria-label="Еда">
+                    <button class="menu__item btn" menu-habbit-id="1" aria-label="Еда">
                         <svg class="icon">
-                            <use xlink:href="img/sprite.svg#dumbbell"></use>
+                            <use xlink:href="img/sprite.svg#sport"></use>
                         </svg>
                     </button>
                     <button class="menu__item btn menu__item_active">
@@ -56,20 +56,26 @@
                 </div>
             </header>
             <main class="main">
-                <div>
+                <div id="days">
                     <div class="habbit">
                         <div class="habbit__day">День 1</div>
                         <div class="habbit__comment">Первый подход всегда даётся тяжело</div>
-                        <button class="habbit__delete">
+                        <button class="habbit__delete" name="delete" aria-label="delete" type="button">
                             <svg class="icon">
                                 <use xlink:href="img/sprite.svg#delete"></use>
                             </svg>
                         </button>
                     </div>
                     <div class="habbit">
-                        <div class="habbit__day">День 2</div>
-                        <div class="habbit__comment">Первый подход всегда даётся тяжело</div>
-                        <button class="habbit__delete">
+                        <div class="habbit__day">
+                            <div class="habbit__flex-text">День 23245624362345645645645645364356</div>
+                        </div>
+                        <div class="habbit__comment">Первый подход всегда даётся Первый подход всегда даётся Первый
+                            подход всегда даётся Первый подход всегда даётся Первый подход всегда даётся Первый подход
+                            всегда даётся Первый подход всегда даётся Первый подход всегда даётся Первый подход всегда
+                            даётся
+                        </div>
+                        <button class="habbit__delete" name="delete" aria-label="delete" type="button">
                             <svg class="icon">
                                 <use xlink:href="img/sprite.svg#delete"></use>
                             </svg>
@@ -77,17 +83,16 @@
                     </div>
                 </div>
                 <div class="habbit">
-                    <div class="habbit__day">День 222323222323222323</div>
+                    <div class="habbit__day">День 3</div>
                     <form class="habbit__form habbit-form">
                         <input class="habbit-form__input" type="text" placeholder="Комментарий">
                         <img src="./img/svg/comment.svg" class="habbit-form__img" alt="Комментарий">
-                        <button class="habbit-form__btn">Готово</button>
+                        <button class="habbit-form__btn" type="submit">Готово</button>
                     </form>
                 </div>
             </main>
         </div>
     </div>
-    <script src="./scripts/app.js"></script>
 </body>
 
 
