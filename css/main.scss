@@ -163,10 +163,11 @@ body {
     &__cover-bar {
         position: absolute;
         // todo Заменить на style
-        width: 80%;
+        // width: 80%;
         height: 5px;
         border-radius: 4px;
         background: rgb(80, 81, 249);
+        transition: width 0.5s ease-in-out;
     }
 }
 
