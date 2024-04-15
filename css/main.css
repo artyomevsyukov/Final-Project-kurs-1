@@ -15,32 +15,6 @@
   --active-color: rgb(255, 92, 132);
 }
 
-.habbit-form__btn, .menu__item {
-  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-.habbit-form__btn:focus, .menu__item:focus {
-  outline: none;
-}
-.habbit-form__btn:hover, .menu__item:hover {
-  background-color: #6a6afb;
-}
-.habbit-form__btn:hover img, .menu__item:hover img {
-  filter: brightness(0) invert(1);
-}
-.habbit-form__btn:hover svg, .menu__item:hover svg {
-  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  stroke: rgb(255, 255, 255);
-  fill: #6a6afb;
-}
-.habbit-form__btn:active, .menu__item:active {
-  background-color: var(--active-color);
-}
-.habbit-form__btn:active svg, .menu__item:active svg {
-  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  stroke: rgb(255, 255, 255);
-  fill: var(--active-color);
-}
-
 body {
   background-color: #877cb4;
 }
@@ -95,37 +69,26 @@ body {
   margin-bottom: 25px;
 }
 .menu__item {
+  background: #ffffff;
+  box-shadow: 0px 8px 14px rgba(62, 107, 224, 0.12);
+  border-radius: 14px;
+  border: none;
+  height: 45px;
+  width: 45px;
   cursor: pointer;
-  background-color: #fff;
-  box-shadow: 0 8px 14px 0 rgba(62, 107, 224, 0.12);
-  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+.menu__item:hover {
+  background-color: #6a6afb;
+}
+.menu__item:hover img {
+  filter: brightness(0) invert(1);
 }
 .menu__item_active {
-  cursor: default;
-  background-color: var(--main-color);
+  background-color: #5051f9;
 }
 .menu__item_active img {
   filter: brightness(0) invert(1);
-}
-.menu__item_active svg {
-  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  stroke: rgb(255, 255, 255);
-  fill: var(--main-color);
-}
-.menu__item_active:hover {
-  background-color: rgb(80, 81, 249);
-}
-.menu__item_active:hover svg {
-  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  background-color: rgb(80, 81, 249);
-  fill: var(--main-color);
-  stroke: var(--hover-color);
-}
-.menu__item_active:active svg {
-  transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out, filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  background-color: var(--main-color);
-  stroke: rgb(255, 255, 255);
-  fill: var(--main-color);
 }
 .menu__add {
   cursor: pointer;
@@ -306,5 +269,10 @@ body {
   line-height: 39px;
 }
 .habbit-form__btn:hover {
+  background-color: var(--hover-color);
+  color: var(--light-color);
+}
+.habbit-form__btn:active {
+  background-color: var(--active-color);
   color: var(--light-color);
 }/*# sourceMappingURL=main.css.map */
