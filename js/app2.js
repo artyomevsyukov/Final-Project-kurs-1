@@ -5,27 +5,27 @@ const HABBIT_KEY = "HABBIT_KEY";
 let globalActiveHabbitId;
 
 // data
-const data = [
-    {
-        id: 1,
-        icon: "sport",
-        name: "Отжимания",
-        target: 3,
-        days: [
-            { comment: "Первый подход всегда даётся тяжело" },
-            { comment: "Второй день уже проще" },
-        ],
-    },
-    {
-        id: 2,
-        icon: "food",
-        name: "Правильное питание",
-        target: 10,
-        days: [{ comment: "Круто!" }],
-    },
-];
-const dataString = JSON.stringify(data);
-localStorage.setItem("HABBIT_KEY", dataString);
+// const data = [
+//     {
+//         id: 1,
+//         icon: "sport",
+//         name: "Отжимания",
+//         target: 3,
+//         days: [
+//             { comment: "Первый подход всегда даётся тяжело" },
+//             { comment: "Второй день уже проще" },
+//         ],
+//     },
+//     {
+//         id: 2,
+//         icon: "food",
+//         name: "Правильное питание",
+//         target: 10,
+//         days: [{ comment: "Круто!" }],
+//     },
+// ];
+// const dataString = JSON.stringify(data);
+// localStorage.setItem("HABBIT_KEY", dataString);
 
 //page
 const page = {
@@ -105,6 +105,7 @@ function rerenderContent(activeHabbit) {
     page.content.daysContainer.innerHTML = "";
     for (const index in activeHabbit.days) {
         const element = document.createElement("div");
+        // element.setAttribute("habbit-id", index + 1);
         element.classList.add("habbit");
         element.innerHTML = `<div class="habbit__day">
             <div class="habbit__flex-text">День ${Number(index) + 1}</div>
@@ -112,7 +113,7 @@ function rerenderContent(activeHabbit) {
             <div class="habbit__comment">${
                 activeHabbit.days[index].comment
             }</div>
-            <button class="habbit__delete" name="delete" aria-label="delete" type="button">
+            <button class="habbit__delete" name="delete" aria-label="delete" type="button" onclick="delletDays(activeHabbit)">
             <svg class="icon">
                 <use xlink:href="img/sprite.svg#delete"></use>
             </svg>
@@ -138,6 +139,7 @@ function addDays(event) {
     const data = new FormData(event.target);
     const form = event.target;
     const comment = data.get("comment");
+    // console.log(event.target);
     // console.log(data);
     // console.log(form);
     // console.log(comment);
@@ -145,26 +147,32 @@ function addDays(event) {
     form["comment"].classList.remove("error");
     if (!comment) {
         form["comment"].classList.add("error");
-    }
-    // else {
-    habbits = habbits.map((habbit) => {
-        if (habbit.id === globalActiveHabbitId) {
-            return {
-                ...habbit,
-                // days: habbit.days.push({ comment }),
-                days: habbit.days.concat({ comment }),
-            };
-        }
-        // console.log(habbits);
-        return habbit;
-    });
+    } else {
+        console.log({ ...habbits });
+        habbits = habbits.map((habbit) => {
+            if (habbit.id === globalActiveHabbitId) {
+                // return {
+                //     ...habbit,
+                //     // days: habbit.days.push({ comment }),
+                //     days: habbit.days.concat({ comment }),
+                // };
+                habbit.days.push({ comment });
+                return {
+                    ...habbit,
+                };
+            }
+            // console.log(habbits);
+            return habbit;
+        });
 
-    form["comment"].value = "";
-    rerender(globalActiveHabbitId);
-    console.log("dsfsdf ", habbits);
-    saveData();
-    // }
+        form["comment"].value = "";
+        rerender(globalActiveHabbitId);
+        console.log("dsfsdf ", habbits);
+        saveData();
+    }
 }
+
+function delletDays() {}
 
 //init
 (() => {
