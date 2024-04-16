@@ -13,6 +13,7 @@
   --main-color: rgb(80, 81, 249);
   --hover-color: rgb(106, 106, 251);
   --active-color: rgb(255, 92, 132);
+  --error: rgb(196, 19, 63);
 }
 
 body {
@@ -238,6 +239,10 @@ body {
   font-size: 16px;
   font-weight: 500;
   line-height: 18px;
+  transition: border 0.3s ease-in-out;
+}
+.habbit-form__input-error {
+  border: 1px solid red;
 }
 .habbit-form__input::-moz-placeholder {
   color: rgb(136, 153, 168);
@@ -250,6 +255,12 @@ body {
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
+}
+.habbit-form__input:focus {
+  border: 1px solid var(--hover-color);
+}
+.habbit-form__input:hover {
+  border: 1px solid var(--hover-color);
 }
 .habbit-form__img {
   position: absolute;
@@ -267,6 +278,7 @@ body {
   font-size: 13px;
   font-weight: 500;
   line-height: 39px;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 .habbit-form__btn:hover {
   background-color: var(--hover-color);
@@ -275,4 +287,8 @@ body {
 .habbit-form__btn:active {
   background-color: var(--active-color);
   color: var(--light-color);
+}
+
+.error {
+  border: 1px solid red;
 }/*# sourceMappingURL=main.css.map */

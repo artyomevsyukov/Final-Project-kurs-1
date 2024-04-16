@@ -9,7 +9,7 @@ const data = [
         id: 1,
         icon: "sport",
         name: "Отжимания",
-        target: 10,
+        target: 3,
         days: [
             { comment: "Первый подход всегда даётся тяжело" },
             { comment: "Второй день уже проще" },
@@ -41,6 +41,16 @@ localStorage.setItem("HABBIT_KEY", dataString);
 
 const page = {
     menu: document.querySelector(".menu__list"),
+    header: {
+        title: document.querySelector(".header__title"),
+        progressPercent: document.querySelector(".progress__percent"),
+        progressCoverBar: document.querySelector(".progress__cover-bar"),
+    },
+    content: {
+        daysContainer: document.getElementById("days"),
+        nextDay: document.querySelector(".habbit__flex-text"),
+        comment: document.querySelector(".habbit__comment"),
+    },
 };
 
 //utils
@@ -99,10 +109,52 @@ function rerenderMenu(activeHabbit) {
         }
     }
 }
+function rerenderHead(activeHabbit) {
+    page.header.title.innerText = `${activeHabbit.name}`;
+    const progress =
+        activeHabbit.days.length / activeHabbit.target > 1
+            ? 100
+            : (activeHabbit.days.length / activeHabbit.target) * 100;
+    page.header.progressPercent.textContent = progress.toFixed(0) + "%";
+    page.header.progressCoverBar.style = `width:${progress.toFixed(0)}%`;
+}
+function rerenderContent(activeHabbit) {
+    page.content.daysContainer.innerHTML = "";
+    for (const index in activeHabbit.days) {
+        const element = document.createElement("div");
+        element.classList.add("habbit");
+        element.innerHTML = `
+        <div class="habbit__day">
+            <div class="habbit__flex-text">День ${Number(index) + 1}</div>
+                </div>
+                <div class="habbit__comment">${
+                    activeHabbit.days[index].comment
+                }</div>
+                <button class="habbit__delete" name="delete" aria-label="delete" type="button">
+                    <svg class="icon">
+                        <use xlink:href="img/sprite.svg#delete"></use>
+                    </svg>
+                </button>`;
+
+        page.content.daysContainer.appendChild(element);
+        page.content.nextDay.innerText = `День ${activeHabbit.days.length + 1}`;
+    }
+}
 
 function rerender(activeHabbitId) {
     const activeHabbit = habbits.find((habbit) => habbit.id === activeHabbitId);
     rerenderMenu(activeHabbit);
+    rerenderHead(activeHabbit);
+    rerenderContent(activeHabbit);
+}
+
+function addDays(event) {
+    event.preventDefault();
+    console.log(event);
+    const data = new FormData(event.target);
+    console.log(data);
+    console.log(data.get("comment"));
+    console.log(data.getAll("comment"));
 }
 
 //init
