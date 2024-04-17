@@ -113,7 +113,7 @@ function rerenderContent(activeHabbit) {
             <div class="habbit__comment">${
                 activeHabbit.days[index].comment
             }</div>
-            <button class="habbit__delete" name="delete" aria-label="delete" type="button" onclick="delletDays(activeHabbit)">
+            <button class="habbit__delete" name="delete" aria-label="delete" type="button">
             <svg class="icon">
                 <use xlink:href="img/sprite.svg#delete"></use>
             </svg>
@@ -121,6 +121,7 @@ function rerenderContent(activeHabbit) {
         page.content.daysContainer.appendChild(element);
     }
     page.content.nextDay.innerHTML = `День ${activeHabbit.days.length + 1}`;
+    // page.content.nextDay.setAttribute();
 }
 
 function rerender(activeHabbitId) {
@@ -167,14 +168,33 @@ function addDays(event) {
 
         form["comment"].value = "";
         rerender(globalActiveHabbitId);
-        console.log("dsfsdf ", habbits);
+        console.log("add ", habbits);
         saveData();
     }
 }
 
-function delletDays() {}
+// function deleteDays(index) {
+//     habbits = habbits.map((habbit) => {
+//         if (habbit.id === globalActiveHabbitId) {
+//             habbit.days.splice(index, 1);
+//             return {
+//                 ...habbit,
+//                 days: habbit.days,
+//             };
+//         }
+//         return habbit;
+//     });
+//     rerender(globalActiveHabbitId);
+//     console.log("delete ", habbits);
+//     saveData();
+// }
 
 //init
+
+function deleteDays(index) {
+    //
+}
+
 (() => {
     loadDate();
     // console.log(habbits);
