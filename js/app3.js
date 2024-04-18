@@ -153,11 +153,30 @@ function rerenderContent(activeHabbit) {
         page.content.daysContainer.appendChild(element);
     }
     page.content.nextDay.innerHTML = `День ${activeHabbit.days.length + 1}`;
-    console.log(page.content.nextDay.innerHTML);
+    // page.content.nextDay.setAttribute("form-comment-id", index);
 }
-
+// preventDefault;
+// FormData;
+// ("comment");
+// error;
 function addDays(event) {
     event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+    const comment = data.get("comment");
+    // form["comment"].classList.remove("error");
+    if (!comment) {
+        form["comment"].classList.add("error");
+    } else {
+        form["comment"].classList.remove("error");
+        form["comment"].value = "";
+    }
+    console.log(comment);
+
+    // habbits = habbits.map((habbit) => {
+    //     let el = comment.value;
+    //     habbit.days.push({});
+    // });
 }
 
 function rerender(activeHabbitID) {
