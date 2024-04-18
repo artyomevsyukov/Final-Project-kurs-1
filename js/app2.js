@@ -113,7 +113,7 @@ function rerenderContent(activeHabbit) {
             <div class="habbit__comment">${
                 activeHabbit.days[index].comment
             }</div>
-            <button class="habbit__delete" name="delete" aria-label="delete" type="button">
+            <button class="habbit__delete" name="delete" aria-label="delete" type="button" onclick="deleteDays(${index})">
             <svg class="icon">
                 <use xlink:href="img/sprite.svg#delete"></use>
             </svg>
@@ -121,7 +121,6 @@ function rerenderContent(activeHabbit) {
         page.content.daysContainer.appendChild(element);
     }
     page.content.nextDay.innerHTML = `День ${activeHabbit.days.length + 1}`;
-    // page.content.nextDay.setAttribute();
 }
 
 function rerender(activeHabbitId) {
@@ -134,6 +133,11 @@ function rerender(activeHabbitId) {
     rerenderHead(activeHabbit);
     rerenderContent(activeHabbit);
 }
+
+// preventDefault;
+// FormData;
+// ("comment");
+// error;
 
 function addDays(event) {
     event.preventDefault();
@@ -173,6 +177,22 @@ function addDays(event) {
     }
 }
 
+function deleteDays(index) {
+    habbits = habbits.map((habbit) => {
+        if (habbit.id === globalActiveHabbitId) {
+            habbit.days.splice(index, 1);
+            return {
+                ...habbit,
+                days: habbit.days,
+            };
+        }
+        return habbit;
+    });
+    rerender(globalActiveHabbitId);
+    console.log("del ", habbits);
+    saveData();
+}
+
 // function deleteDays(index) {
 //     habbits = habbits.map((habbit) => {
 //         if (habbit.id === globalActiveHabbitId) {
@@ -185,18 +205,41 @@ function addDays(event) {
 //         return habbit;
 //     });
 //     rerender(globalActiveHabbitId);
-//     console.log("delete ", habbits);
+//     console.log("del ", habbits);
+//     console.log("del ", habbits);
 //     saveData();
 // }
 
 //init
 
-function deleteDays(index) {
-    //
-}
-
+// init
 (() => {
     loadDate();
     // console.log(habbits);
     rerender(habbits[0].id); //0 активный по умолчанию
 })();
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// {/* <button class="habbit__delete" name="delete" aria-label="delete" type="button" onclick="deleteDays(${index})"></button> */}
