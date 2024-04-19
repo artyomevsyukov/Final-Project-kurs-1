@@ -6,7 +6,25 @@ const HABBIT_KEY = "HABBIT_KEY";
 let globalActiveHabbitId;
 
 // date
-
+// [
+//     {
+//         "id": 1,
+//         "icon": "sport",
+//         "name": "Отжимания",
+//         "target": 10,
+//         "days": [
+//             { "comment": "Первый подход всегда даётся тяжело" },
+//             { "comment": "Второй день уже проще" }
+//         ]
+//     },
+//     {
+//         "id": 2,
+//         "icon": "food",
+//         "name": "Правильное питание",
+//         "target": 10,
+//         "days": [{ "comment": "Круто!" }]
+//     }
+// ]
 // page
 
 const page = {
@@ -36,62 +54,6 @@ function saveData() {
     localStorage.setItem(HABBIT_KEY, JSON.stringify(habbits));
 }
 // render
-
-// function rerenderMenu(activeHabbit) {
-//     for (const habbit of habbits) {
-//         const existed = document.querySelector(
-//             `[menu-habbit-id="${habbit.id}"]`
-//         );
-//         console.log(habbit);
-//         console.log(habbit.id);
-//         if (!existed) {
-//             const element = document.createElement("button");
-//             element.setAttribute("menu-habbit-id", habbit.id);
-//             element.classList.add("menu__item", "btn");
-//             element.addEventListener("click", () => rerender(habbit.id));
-//             element.innerHTML = `<img src="./img/svg/${habbit.icon}.svg" alt="${habbit.icon}">`;
-
-//             if (activeHabbit.id === habbit.id) {
-//                 element.classList.add("menu__item_active");
-//             }
-//             page.menu.appendChild(element);
-//             continue;
-//         }
-
-//         if (activeHabbit.id === habbit.id) {
-//             existed.classList.add("menu__item_active");
-//         } else {
-//             existed.classList.remove("menu__item_active");
-//         }
-//     }
-// }
-
-// function rerenderMenu(activeHabbit) {
-//     for (const habbit of habbits) {
-//         const existed = document.querySelector(
-//             `[menu-habbit-id="${habbit.id}"]`
-//         );
-//         if (!existed) {
-//             const element = document.createElement("button");
-//             element.classList.add("menu__item", "btn");
-//             element.setAttribute("menu-habbit-id", habbit.id);
-//             element.innerHTML = `<img src="./img/svg/${habbit.icon}.svg" alt="${habbit.icon}">`;
-//             page.menu.appendChild(element);
-//             element.addEventListener("click", () => rerender(habbit.id));
-
-//             if (activeHabbit.id === habbit.id) {
-//                 element.classList.add("menu__item_active");
-//             }
-//             continue;
-//         }
-
-//         if (activeHabbit.id === habbit.id) {
-//             existed.classList.add("menu__item_active");
-//         } else {
-//             existed.classList.remove("menu__item_active");
-//         }
-//     }
-// }
 
 function rerenderMenu(activeHabbit) {
     for (const habbit of habbits) {
@@ -141,27 +103,27 @@ function rerenderContent(activeHabbit) {
                                 Number(index) + 1
                             }</div>
                         </div>
-                        <div class="habbit__comment">${
-                            activeHabbit.days[index].comment
-                        }</div>
-                        <button class="habbit__delete" name="delete" aria-label="delete" type="button">
+                        <div class="habbit__comment">
+                        ${activeHabbit.days[index].comment}
+                        </div>
+                        <button class="habbit__delete" name="delete" aria-label="delete" type="button" onclick="deleteDays(${index})">
                             <svg class="icon">
                                 <use xlink:href="img/sprite.svg#delete"></use>
                             </svg>
                         </button>
         `;
         page.content.daysContainer.appendChild(element);
+        // element.setAttribute("deleteBtn-id", index);
     }
     page.content.nextDay.innerHTML = `День ${activeHabbit.days.length + 1}`;
-    // page.content.nextDay.setAttribute("form-comment-id", index);
 }
 // preventDefault;
 // FormData;
 // ("comment");
 // error;
 function addDays(event) {
-    event.preventDefault();
     const form = event.target;
+    event.preventDefault();
     const data = new FormData(form);
     const comment = data.get("comment");
     // form["comment"].classList.remove("error");
@@ -170,18 +132,45 @@ function addDays(event) {
     } else {
         form["comment"].classList.remove("error");
         form["comment"].value = "";
+        habbits = habbits.map((habbit) => {
+            if (globalActiveHabbitId === habbit.id) {
+                habbit.days.push({ comment });
+                return habbit;
+                return {
+                    ...habbit,
+                    // days: habbit.days.concat({ comment }),
+                };
+            }
+            return habbit;
+        });
+        rerender(globalActiveHabbitId);
+        saveData();
     }
-    console.log(comment);
-
-    // habbits = habbits.map((habbit) => {
-    //     let el = comment.value;
-    //     habbit.days.push({});
-    // });
+}
+function deleteDays(index) {
+    habbits = habbits.map((habbit) => {
+        console.log("!!!habbit:", habbit);
+        console.log("{habbit}", { habbit });
+        console.log("{...habbit}", { ...habbit });
+        if (habbit.id === globalActiveHabbitId) {
+            habbit.days.splice(index, 1);
+            return habbit;
+            return {
+                ...habbit,
+                // days: habbit.days
+                // days: habbit.days.splice(index, 1),
+            };
+        }
+        return habbit;
+    });
+    saveData();
+    rerender(globalActiveHabbitId);
 }
 
 function rerender(activeHabbitID) {
+    globalActiveHabbitId = activeHabbitID;
     let activeHabbit = habbits.find((habbit) => habbit.id === activeHabbitID);
-    // console.log(activeHabbit);
+
     if (!activeHabbit) {
         return;
     }
