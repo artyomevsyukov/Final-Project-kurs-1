@@ -107,6 +107,44 @@
                 </div>
             </main>
         </div>
+        <div class="cover cover_hiden">
+            <div class="popup">
+                <h2 class="popup__title">Новая привычка</h2>
+                <div class="popup__subtitle">Иконка</div>
+
+                <ul class="popup__list">
+                    <li class="popup__item">
+                        <button class="btn popup__btn popup__btn_active" popup-habbit-id="1" aria-label="Еда">
+                            <img src="./img/svg/sport.svg" alt="sport">
+                        </button>
+                    </li>
+                    <li class="popup__item">
+                        <button class="btn popup__btn" popup-habbit-id="2" aria-label="Еда">
+                            <img src="./img/svg/sport.svg" alt="sport">
+                        </button>
+                    </li>
+                    <li class="popup__item">
+                        <button class="btn popup__btn" popup-habbit-id="3" aria-label="Еда">
+                            <img src="./img/svg/sport.svg" alt="sport">
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- <form class="popup__form" onsubmit="addDays(event)"> -->
+                <form class="popup__form">
+                    <div class="popup__input">
+                        <input name="name" class="habbit-form__input" type="text" placeholder="Название">
+                        <input name="target" class="habbit-form__input" type="number" placeholder="Цель">
+                    </div>
+                    <button class="popup__submit" type="submit">Готово</button>
+                </form>
+
+                <button class="popup__close">
+                    <img src="./img/svg/close.svg" alt="Закрыть">
+                </button>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 

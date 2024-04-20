@@ -22,7 +22,7 @@
 }
 
 body {
-    background-color: #877cb4;
+    // background-color: #877cb4;
 }
 .icon {
     display: block;
@@ -310,4 +310,137 @@ body {
 }
 .error {
     border: 1px solid red;
+}
+
+.cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cover_hiden {
+    // display: none;
+    // background: transparent;
+}
+.popup {
+    position: relative;
+    min-width: 424px;
+    padding: 22px 22px 42px 22px;
+    border-radius: 10px;
+
+    box-shadow: 0px 8px 14px 12px rgba(56, 56, 56, 0.05);
+    background: rgb(255, 255, 255);
+    &__title {
+        text-align: center;
+        margin-bottom: 13px;
+        font-family: Comfortaa;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 27px;
+    }
+    &__subtitle {
+        text-align: center;
+        margin-bottom: 6px;
+        color: rgb(118, 131, 150);
+        font-family: Comfortaa;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16px;
+    }
+
+    &__list {
+        margin-bottom: 18px;
+        justify-content: center;
+        display: flex;
+        gap: 25px;
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    &__btn {
+        background: #ffffff;
+        box-shadow: 0px 8px 14px rgba(62, 107, 224, 0.12);
+        border-radius: 14px;
+        border: none;
+        height: 45px;
+        width: 45px;
+        cursor: pointer;
+        transition: filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+        &:hover {
+            background-color: #6a6afb;
+        }
+
+        &:hover img {
+            filter: brightness(0) invert(1);
+        }
+
+        &_active {
+            background-color: #5051f9;
+        }
+
+        &_active img {
+            filter: brightness(0) invert(1);
+        }
+    }
+
+    &__form {
+    }
+    &__input {
+    }
+    &__submit {
+        display: block;
+        margin: 0 auto;
+        padding: 0 33px;
+        border-radius: 9px;
+        border: none;
+        background: rgb(237, 236, 254);
+        color: rgb(80, 81, 249);
+        font-family: Comfortaa;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 39px;
+        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+        &:hover {
+            background-color: var(--hover-color);
+            color: var(--light-color);
+        }
+        &:active {
+            background-color: var(--active-color);
+            color: var(--light-color);
+        }
+    }
+    &__close {
+        position: absolute;
+        content: "";
+        top: 10px;
+        right: 10px;
+        border: none;
+        background-color: inherit;
+    }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.popup .habbit-form__input {
+    width: 100%;
+    padding: 9px 20px 9px 20px;
+    gap: 6px;
+    margin-bottom: 6px;
+
+    &:last-child {
+        margin-bottom: 18px;
+    }
+}
+.popup .habbit-form__btn {
 }
