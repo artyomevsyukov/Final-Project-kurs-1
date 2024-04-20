@@ -40,10 +40,8 @@ const page = {
         comment: document.querySelector(".habbit__comment"),
     },
     popup: {
-        // cover: document.querySelector(".cover"),
         cover: document.getElementById("add-habbit-popup"),
-        // add: document.querySelector(".menu__add"),
-        // close: document.querySelector(".popup__close"),
+        iconField: document.querySelector('.popup__input [input="icon"]'),
     },
 };
 
@@ -59,6 +57,10 @@ function loadDate() {
 function saveData() {
     localStorage.setItem(HABBIT_KEY, JSON.stringify(habbits));
 }
+function toglePopup() {
+    page.popup.cover.classList.toggle("cover_hiden");
+}
+
 // render
 
 function rerenderMenu(activeHabbit) {
@@ -124,6 +126,7 @@ function rerenderContent(activeHabbit) {
     page.content.nextDay.innerHTML = `День ${activeHabbit.days.length + 1}`;
 }
 
+// работа с днями
 function addDays(event) {
     const form = event.target;
     event.preventDefault();
@@ -169,9 +172,10 @@ function deleteDays(index) {
     saveData();
     rerender(globalActiveHabbitId);
 }
-
-function toglePopup() {
-    page.popup.cover.classList.toggle("cover_hiden");
+// Работа с Popup
+function setIcon(icon) {
+    page.popup.iconField.value = icon;
+    const activeIcon = document / q;
 }
 
 function rerender(activeHabbitID) {
