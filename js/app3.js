@@ -39,6 +39,12 @@ const page = {
         nextDay: document.querySelector(".habbit__flex-text"),
         comment: document.querySelector(".habbit__comment"),
     },
+    popup: {
+        // cover: document.querySelector(".cover"),
+        cover: document.getElementById("add-habbit-popup"),
+        // add: document.querySelector(".menu__add"),
+        // close: document.querySelector(".popup__close"),
+    },
 };
 
 // utils
@@ -117,10 +123,7 @@ function rerenderContent(activeHabbit) {
     }
     page.content.nextDay.innerHTML = `День ${activeHabbit.days.length + 1}`;
 }
-// preventDefault;
-// FormData;
-// ("comment");
-// error;
+
 function addDays(event) {
     const form = event.target;
     event.preventDefault();
@@ -165,6 +168,10 @@ function deleteDays(index) {
     });
     saveData();
     rerender(globalActiveHabbitId);
+}
+
+function toglePopup() {
+    page.popup.cover.classList.toggle("cover_hiden");
 }
 
 function rerender(activeHabbitID) {

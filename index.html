@@ -40,7 +40,7 @@
                     </button> -->
 
                 </div>
-                <button class="menu__add btn">
+                <button class="menu__add btn" onclick="toglePopup()">
                     <img src="./img/svg/add.svg" alt="Добавить привычку" />
                 </button>
             </nav>
@@ -107,7 +107,7 @@
                 </div>
             </main>
         </div>
-        <div class="cover cover_hiden">
+        <div class="cover cover_hiden" id="add-habbit-popup">
             <div class="popup">
                 <h2 class="popup__title">Новая привычка</h2>
                 <div class="popup__subtitle">Иконка</div>
@@ -139,7 +139,7 @@
                     <button class="popup__submit" type="submit">Готово</button>
                 </form>
 
-                <button class="popup__close">
+                <button class="popup__close" onclick="toglePopup()">
                     <img src="./img/svg/close.svg" alt="Закрыть">
                 </button>
             </div>

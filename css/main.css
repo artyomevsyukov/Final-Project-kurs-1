@@ -301,6 +301,10 @@
   justify-content: center;
 }
 
+.cover_hiden {
+  display: none;
+}
+
 .popup {
   position: relative;
   min-width: 424px;
