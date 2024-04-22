@@ -41,11 +41,11 @@ const page = {
     },
     popup: {
         cover: document.getElementById("add-habbit-popup"),
-        iconField: document.querySelector('.popup__form input[name="icon"]'),
+        iconField: document.querySelector(".popup__form input[name='icon']"),
     },
 };
 
-// utils
+// utilitars
 function loadDate() {
     const habbitString = localStorage.getItem("HABBIT_KEY");
     const habbitArray = JSON.parse(habbitString);
@@ -59,6 +59,9 @@ function saveData() {
 }
 function toglePopup() {
     page.popup.cover.classList.toggle("cover_hiden");
+}
+function validateForm(form, field) {
+    //
 }
 
 // render
@@ -95,7 +98,7 @@ function rerenderHead(activeHabbit) {
         activeHabbit.days.length / activeHabbit.target > 1
             ? 100
             : (activeHabbit.days.length / activeHabbit.target) * 100;
-    page.header.progressPercent.textContent = progress + "%";
+    page.header.progressPercent.textContent = progress.toFixed(0) + "%";
     page.header.progressCoverBar.setAttribute("style", `width:${progress}%`);
     // page.header.progressCoverBar.style = `width:${progress}%`;
 }
@@ -179,12 +182,35 @@ function deleteDays(index) {
 
 function setIcon(context, icon) {
     page.popup.iconField.value = icon;
-    console.log(page.popup.iconField.value);
+    // console.log(page.popup.iconField.value);
     const activeIcon = document.querySelector(
         ".popup__icon.popup__icon_active"
     );
     activeIcon.classList.remove("popup__icon_active");
     context.classList.add("popup__icon_active");
+}
+
+function addHabbit(event) {
+    const form = event.target;
+    event.preventDefault();
+    const data = new FormData(form);
+    const id = data.get("id");
+    const icon = data.get("icon");
+    const name = data.get("name");
+    const target = data.get("target");
+
+    const nextId = habbits.length + 1;
+    habbits.push({
+        id: nextId,
+        icon: icon,
+        name: name,
+        target: target,
+        days: [],
+    });
+
+    rerender(nextId);
+    saveData();
+    toglePopup();
 }
 
 function rerender(activeHabbitID) {
@@ -194,6 +220,10 @@ function rerender(activeHabbitID) {
     if (!activeHabbit) {
         return;
     }
+    document.location.replace(
+        document.location.pathname + "#" + activeHabbitID
+    );
+
     rerenderMenu(activeHabbit);
     rerenderHead(activeHabbit);
     rerenderContent(activeHabbit);
@@ -201,6 +231,13 @@ function rerender(activeHabbitID) {
 // init
 (() => {
     loadDate();
-
-    rerender(habbits[0].id);
+    const hashId = Number(document.location.hash.replace("#", ""));
+    console.log(hashId);
+    const urlHabbit = habbits.find((habbit) => habbit.id === hashId);
+    console.log(urlHabbit);
+    if (urlHabbit.id) {
+        rerender(urlHabbit.id);
+    } else {
+        rerender(habbits[0].id);
+    }
 })();
