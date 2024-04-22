@@ -21,9 +21,9 @@
     --error: rgb(196, 19, 63);
 }
 
-body {
-    // background-color: #877cb4;
-}
+// body {
+//     background-color: #877cb4;
+// }
 .icon {
     display: block;
     width: 25px;
@@ -324,7 +324,7 @@ body {
     justify-content: center;
 }
 .cover_hiden {
-    // display: none;
+    display: none;
     // background: transparent;
 }
 .popup {
@@ -364,7 +364,7 @@ body {
         flex-direction: column;
         gap: 6px;
     }
-    &__btn {
+    &__icon {
         background: #ffffff;
         box-shadow: 0px 8px 14px rgba(62, 107, 224, 0.12);
         border-radius: 14px;
@@ -391,10 +391,10 @@ body {
         }
     }
 
-    &__form {
-    }
-    &__input {
-    }
+    // &__form {
+    // }
+    // &__input {
+    // }
     &__submit {
         display: block;
         margin: 0 auto;
@@ -442,5 +442,5 @@ input::-webkit-inner-spin-button {
         margin-bottom: 18px;
     }
 }
-.popup .habbit-form__btn {
-}
+// .popup .habbit-form__btn {
+// }

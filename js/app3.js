@@ -41,7 +41,7 @@ const page = {
     },
     popup: {
         cover: document.getElementById("add-habbit-popup"),
-        iconField: document.querySelector('.popup__input [input="icon"]'),
+        iconField: document.querySelector('.popup__form input[name="icon"]'),
     },
 };
 
@@ -173,9 +173,18 @@ function deleteDays(index) {
     rerender(globalActiveHabbitId);
 }
 // Работа с Popup
-function setIcon(icon) {
+// document.querySelector(".popup__title").addEventListener("click", function () {
+//     console.log(this);
+// });
+
+function setIcon(context, icon) {
     page.popup.iconField.value = icon;
-    const activeIcon = document / q;
+    console.log(page.popup.iconField.value);
+    const activeIcon = document.querySelector(
+        ".popup__icon.popup__icon_active"
+    );
+    activeIcon.classList.remove("popup__icon_active");
+    context.classList.add("popup__icon_active");
 }
 
 function rerender(activeHabbitID) {

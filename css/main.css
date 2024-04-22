@@ -301,6 +301,10 @@
   justify-content: center;
 }
 
+.cover_hiden {
+  display: none;
+}
+
 .popup {
   position: relative;
   min-width: 424px;
@@ -337,7 +341,7 @@
   flex-direction: column;
   gap: 6px;
 }
-.popup__btn {
+.popup__icon {
   background: #ffffff;
   box-shadow: 0px 8px 14px rgba(62, 107, 224, 0.12);
   border-radius: 14px;
@@ -347,16 +351,16 @@
   cursor: pointer;
   transition: filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
-.popup__btn:hover {
+.popup__icon:hover {
   background-color: #6a6afb;
 }
-.popup__btn:hover img {
+.popup__icon:hover img {
   filter: brightness(0) invert(1);
 }
-.popup__btn_active {
+.popup__icon_active {
   background-color: #5051f9;
 }
-.popup__btn_active img {
+.popup__icon_active img {
   filter: brightness(0) invert(1);
 }
 .popup__submit {
