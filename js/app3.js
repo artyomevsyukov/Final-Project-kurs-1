@@ -60,7 +60,7 @@ function saveData() {
 function toglePopup() {
     page.popup.cover.classList.toggle("cover_hiden");
 }
-function validateForm(form, fields) {
+function validateAndGetFormData(form, fields) {
     const formData = new FormData(form);
     const res = {};
     for (const field of fields) {
@@ -80,6 +80,7 @@ function validateForm(form, fields) {
     if (!isValid) {
         return;
     }
+    console.log("res:", res);
     return res;
 
     // const form = event.target;
@@ -98,6 +99,9 @@ function resetForm(form, fields) {
     for (const field of fields) {
         form[field].value = "";
     }
+    // fields.forEach((field) => {
+    //     form[field];
+    // });
 }
 // render
 
@@ -166,31 +170,58 @@ function rerenderContent(activeHabbit) {
 
 // работа с днями
 function addDays(event) {
-    const form = event.target;
     event.preventDefault();
-    const data = new FormData(form);
-    const comment = data.get("comment");
-    // form["comment"].classList.remove("error");
-    if (!comment) {
-        form["comment"].classList.add("error");
-    } else {
-        form["comment"].classList.remove("error");
-        form["comment"].value = "";
-        habbits = habbits.map((habbit) => {
-            if (globalActiveHabbitId === habbit.id) {
-                habbit.days.push({ comment });
-                return habbit;
-                return {
-                    ...habbit,
-                    // days: habbit.days.concat({ comment }),
-                };
-            }
-            return habbit;
-        });
-        rerender(globalActiveHabbitId);
-        saveData();
+    const data = validateAndGetFormData(event.target, ["comment"]);
+    // const { comment } = validateForm(event.target, ["comment"]);
+    if (!data) {
+        return;
     }
+
+    habbits = habbits.map((habbit) => {
+        if (globalActiveHabbitId === habbit.id) {
+            // habbit.days.push({ comment});
+            // habbit.days.push({ comment: data.comment });
+            // return habbit;
+            return {
+                ...habbit,
+                days: habbit.days.concat({ comment: data.comment }),
+            };
+        }
+        return habbit;
+    });
+    resetForm(event.target, ["comment"]);
+    rerender(globalActiveHabbitId);
+    saveData();
 }
+
+// function addDays(event) {
+//     const form = event.target;
+//     console.log(form);
+//     event.preventDefault();
+//     const data = new FormData(form);
+//     const comment = data.get("comment");
+//     // form["comment"].classList.remove("error");
+//     if (!comment) {
+//         form["comment"].classList.add("error");
+//     } else {
+//         form["comment"].classList.remove("error");
+//         form["comment"].value = "";
+//         habbits = habbits.map((habbit) => {
+//             if (globalActiveHabbitId === habbit.id) {
+//                 habbit.days.push({ comment });
+//                 return habbit;
+//                 return {
+//                     ...habbit,
+//                     // days: habbit.days.concat({ comment }),
+//                 };
+//             }
+//             return habbit;
+//         });
+//         rerender(globalActiveHabbitId);
+//         saveData();
+//     }
+// }
+
 function deleteDays(index) {
     habbits = habbits.map((habbit) => {
         // console.log("!!!habbit:", habbit);
@@ -224,26 +255,51 @@ function setIcon(context, icon) {
     context.classList.add("popup__icon_active");
 }
 
+// function addHabbit(event) {
+//     event.preventDefault();
+//     const form = event.target;
+//     const data = new FormData(form);
+//     const icon = data.get("icon");
+//     const name = data.get("name");
+//     const target = data.get("target");
+//     const nextId = habbits.length + 1;
+//     habbits.push({
+//         id: nextId,
+//         icon: icon,
+//         name: name,
+//         target: target,
+//         days: [],
+//     });
+
+//     rerender(nextId);
+//     saveData();
+//     toglePopup();
+// }
 function addHabbit(event) {
     event.preventDefault();
-
-    const form = event.target;
-    const data = new FormData(form);
-    const icon = data.get("icon");
-    const name = data.get("name");
-    const target = data.get("target");
+    const data = new validateAndGetFormData(event.target, [
+        "icon",
+        "name",
+        "target",
+    ]);
+    if (!data) {
+        return;
+    }
+    // const maxId = habbits.reduce((acc, habbit) =>
+    //     acc > habbit.id ? acc : habbit.id
+    // );
     const nextId = habbits.length + 1;
     habbits.push({
         id: nextId,
-        icon: icon,
-        name: name,
-        target: target,
+        name: data.name,
+        icon: data.icon,
+        target: data.target,
         days: [],
     });
-
-    rerender(nextId);
+    resetForm(event.target, ["name", "target"]);
     saveData();
     toglePopup();
+    rerender(nextId);
 }
 
 function rerender(activeHabbitID) {
@@ -273,6 +329,4 @@ function rerender(activeHabbitID) {
     } else {
         rerender(habbits[0].id);
     }
-    console.log(urlHabbit);
-    console.log(urlHabbit.id);
 })();
