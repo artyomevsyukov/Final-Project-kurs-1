@@ -41,13 +41,13 @@ const page = {
     },
     popup: {
         cover: document.getElementById("add-habbit-popup"),
-        iconField: document.querySelector(".popup__form input[name='icon']"),
+        iconField: document.querySelector('.popup__form input[name="icon"]'),
     },
 };
 
 // utilitars
 function loadDate() {
-    const habbitString = localStorage.getItem("HABBIT_KEY");
+    const habbitString = localStorage.getItem(HABBIT_KEY);
     const habbitArray = JSON.parse(habbitString);
     if (Array.isArray(habbitArray)) {
         habbits = habbitArray;
@@ -60,10 +60,45 @@ function saveData() {
 function toglePopup() {
     page.popup.cover.classList.toggle("cover_hiden");
 }
-function validateForm(form, field) {
-    //
-}
+function validateForm(form, fields) {
+    const formData = new FormData(form);
+    const res = {};
+    for (const field of fields) {
+        const fieldValue = formData.get(field);
+        form[field].classList.remove("error");
+        if (!fieldValue) {
+            form[field].classList.add("error");
+        }
+        res[field] = fieldValue;
+    }
+    let isValid = true;
+    for (const field of fields) {
+        if (!res[field]) {
+            isValid = false;
+        }
+    }
+    if (!isValid) {
+        return;
+    }
+    return res;
 
+    // const form = event.target;
+    // const icon = data.get("icon");
+    // const target = data.get("target");
+    // const nextId = habbits.length + 1;
+    // habbits.push({
+    //     id: nextId,
+    //     icon: icon,
+    //     name: name,
+    //     target: target,
+    //     days: [],
+    // });
+}
+function resetForm(form, fields) {
+    for (const field of fields) {
+        form[field].value = "";
+    }
+}
 // render
 
 function rerenderMenu(activeHabbit) {
@@ -158,9 +193,9 @@ function addDays(event) {
 }
 function deleteDays(index) {
     habbits = habbits.map((habbit) => {
-        console.log("!!!habbit:", habbit);
-        console.log("{habbit}", { habbit });
-        console.log("{...habbit}", { ...habbit });
+        // console.log("!!!habbit:", habbit);
+        // console.log("{habbit}", { habbit });
+        // console.log("{...habbit}", { ...habbit });
         if (habbit.id === globalActiveHabbitId) {
             habbit.days.splice(index, 1);
             return habbit;
@@ -182,7 +217,6 @@ function deleteDays(index) {
 
 function setIcon(context, icon) {
     page.popup.iconField.value = icon;
-    // console.log(page.popup.iconField.value);
     const activeIcon = document.querySelector(
         ".popup__icon.popup__icon_active"
     );
@@ -191,14 +225,13 @@ function setIcon(context, icon) {
 }
 
 function addHabbit(event) {
-    const form = event.target;
     event.preventDefault();
+
+    const form = event.target;
     const data = new FormData(form);
-    const id = data.get("id");
     const icon = data.get("icon");
     const name = data.get("name");
     const target = data.get("target");
-
     const nextId = habbits.length + 1;
     habbits.push({
         id: nextId,
@@ -232,12 +265,14 @@ function rerender(activeHabbitID) {
 (() => {
     loadDate();
     const hashId = Number(document.location.hash.replace("#", ""));
-    console.log(hashId);
     const urlHabbit = habbits.find((habbit) => habbit.id === hashId);
-    console.log(urlHabbit);
+    rerender(habbits[0].id);
+
     if (urlHabbit.id) {
         rerender(urlHabbit.id);
     } else {
         rerender(habbits[0].id);
     }
+    console.log(urlHabbit);
+    console.log(urlHabbit.id);
 })();
