@@ -206,6 +206,7 @@ function addDays(event) {
 //     } else {
 //         form["comment"].classList.remove("error");
 //         form["comment"].value = "";
+
 //         habbits = habbits.map((habbit) => {
 //             if (globalActiveHabbitId === habbit.id) {
 //                 habbit.days.push({ comment });
