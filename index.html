@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/main.css" />
-    <!-- <script defer src="./js/app.js"></script> -->
-    <script defer src="./js/app2.js"></script>
+    <script defer src="./js/app.js"></script>
+    <!-- <script defer src="./js/app2.js"></script> -->
     <!-- <script defer src="./js/app3.js"></script> -->
     <title>Final project 1</title>
 </head>
@@ -41,6 +41,9 @@
 
                 </div>
                 <button class="menu__add btn" onclick="toglePopup()">
+                    <img src="./img/svg/add.svg" alt="Добавить привычку" />
+                </button>
+                <button class="menu__delete btn" onclick="deleteHabbit()">
                     <img src="./img/svg/add.svg" alt="Добавить привычку" />
                 </button>
             </nav>
@@ -138,6 +141,7 @@
                     </div>
                     <button class="popup__submit" type="submit">Готово</button>
                 </form>
+
 
                 <button class="popup__close" onclick="toglePopup()">
                     <img src="./img/svg/close.svg" alt="Закрыть">

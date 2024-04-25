@@ -44,10 +44,10 @@
     margin: 0 auto;
     display: flex;
     max-width: 1012px;
+    min-height: 100vh;
 
     .panel {
         padding: 30px;
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -68,6 +68,10 @@
 }
 
 .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Это свойство распределит пространство между элементами внутри .menu */
+    height: 100%;
     &__list {
         display: flex;
         flex-direction: column;
@@ -106,10 +110,19 @@
         border: 1px solid rgb(202, 213, 255);
         transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
             filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        margin-bottom: 30px;
         &:hover {
             background-color: #6a6afb;
         }
-        &:active {
+    }
+    &__delete {
+        margin-top: auto;
+
+        cursor: pointer;
+        border: 1px solid rgb(202, 213, 255);
+        transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out,
+            filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        &:hover {
             background-color: var(--active-color);
         }
     }

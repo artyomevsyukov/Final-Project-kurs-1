@@ -5,6 +5,7 @@ let habbits = [];
 const HABBIT_KEY = "HABBIT_KEY";
 let globalActiveHabbitId;
 
+// localStorage
 // date
 // [
 //     {
@@ -82,26 +83,11 @@ function validateAndGetFormData(form, fields) {
     }
     console.log("res:", res);
     return res;
-
-    // const form = event.target;
-    // const icon = data.get("icon");
-    // const target = data.get("target");
-    // const nextId = habbits.length + 1;
-    // habbits.push({
-    //     id: nextId,
-    //     icon: icon,
-    //     name: name,
-    //     target: target,
-    //     days: [],
-    // });
 }
 function resetForm(form, fields) {
     for (const field of fields) {
         form[field].value = "";
     }
-    // fields.forEach((field) => {
-    //     form[field];
-    // });
 }
 // render
 
@@ -139,11 +125,9 @@ function rerenderHead(activeHabbit) {
             : (activeHabbit.days.length / activeHabbit.target) * 100;
     page.header.progressPercent.textContent = progress.toFixed(0) + "%";
     page.header.progressCoverBar.setAttribute("style", `width:${progress}%`);
-    // page.header.progressCoverBar.style = `width:${progress}%`;
 }
 function rerenderContent(activeHabbit) {
     page.content.daysContainer.innerHTML = "";
-    // for (const index in habbits.days) {
     for (const index in activeHabbit.days) {
         const element = document.createElement("div");
         element.classList.add("habbit");
@@ -163,7 +147,6 @@ function rerenderContent(activeHabbit) {
                         </button>
         `;
         page.content.daysContainer.appendChild(element);
-        // element.setAttribute("deleteBtn-id", index);
     }
     page.content.nextDay.innerHTML = `День ${activeHabbit.days.length + 1}`;
 }
@@ -172,16 +155,12 @@ function rerenderContent(activeHabbit) {
 function addDays(event) {
     event.preventDefault();
     const data = validateAndGetFormData(event.target, ["comment"]);
-    // const { comment } = validateForm(event.target, ["comment"]);
     if (!data) {
         return;
     }
 
     habbits = habbits.map((habbit) => {
         if (globalActiveHabbitId === habbit.id) {
-            // habbit.days.push({ comment});
-            // habbit.days.push({ comment: data.comment });
-            // return habbit;
             return {
                 ...habbit,
                 days: habbit.days.concat({ comment: data.comment }),
@@ -194,48 +173,11 @@ function addDays(event) {
     saveData();
 }
 
-// function addDays(event) {
-//     const form = event.target;
-//     console.log(form);
-//     event.preventDefault();
-//     const data = new FormData(form);
-//     const comment = data.get("comment");
-//     // form["comment"].classList.remove("error");
-//     if (!comment) {
-//         form["comment"].classList.add("error");
-//     } else {
-//         form["comment"].classList.remove("error");
-//         form["comment"].value = "";
-
-//         habbits = habbits.map((habbit) => {
-//             if (globalActiveHabbitId === habbit.id) {
-//                 habbit.days.push({ comment });
-//                 return habbit;
-//                 return {
-//                     ...habbit,
-//                     // days: habbit.days.concat({ comment }),
-//                 };
-//             }
-//             return habbit;
-//         });
-//         rerender(globalActiveHabbitId);
-//         saveData();
-//     }
-// }
-
 function deleteDays(index) {
     habbits = habbits.map((habbit) => {
-        // console.log("!!!habbit:", habbit);
-        // console.log("{habbit}", { habbit });
-        // console.log("{...habbit}", { ...habbit });
         if (habbit.id === globalActiveHabbitId) {
             habbit.days.splice(index, 1);
             return habbit;
-            return {
-                ...habbit,
-                // days: habbit.days
-                // days: habbit.days.splice(index, 1),
-            };
         }
         return habbit;
     });
@@ -243,9 +185,6 @@ function deleteDays(index) {
     rerender(globalActiveHabbitId);
 }
 // Работа с Popup
-// document.querySelector(".popup__title").addEventListener("click", function () {
-//     console.log(this);
-// });
 
 function setIcon(context, icon) {
     page.popup.iconField.value = icon;
@@ -256,26 +195,6 @@ function setIcon(context, icon) {
     context.classList.add("popup__icon_active");
 }
 
-// function addHabbit(event) {
-//     event.preventDefault();
-//     const form = event.target;
-//     const data = new FormData(form);
-//     const icon = data.get("icon");
-//     const name = data.get("name");
-//     const target = data.get("target");
-//     const nextId = habbits.length + 1;
-//     habbits.push({
-//         id: nextId,
-//         icon: icon,
-//         name: name,
-//         target: target,
-//         days: [],
-//     });
-
-//     rerender(nextId);
-//     saveData();
-//     toglePopup();
-// }
 function addHabbit(event) {
     event.preventDefault();
     const data = new validateAndGetFormData(event.target, [
@@ -286,9 +205,7 @@ function addHabbit(event) {
     if (!data) {
         return;
     }
-    // const maxId = habbits.reduce((acc, habbit) =>
-    //     acc > habbit.id ? acc : habbit.id
-    // );
+
     const nextId = habbits.length + 1;
     habbits.push({
         id: nextId,
