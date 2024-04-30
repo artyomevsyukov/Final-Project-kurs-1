@@ -319,6 +319,7 @@ function rerender(activeHabbitID) {
     rerenderContent(activeHabbit);
 }
 // init
+
 (() => {
     loadData();
     const hashId = Number(document.location.hash.replace("#", ""));
